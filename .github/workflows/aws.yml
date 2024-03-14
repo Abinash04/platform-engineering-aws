@@ -43,6 +43,7 @@ jobs:
       - name: Deploy to Kubernetes
         run: |
           mkdir -p $HOME/.kube
-          # echo $config > $HOME/.kube/config
           kubectl get nodes
+          kubectl apply -f ./volvo-platform-app/volvo-namespace.yaml
           kubectl apply -f ./volvo-platform-app/volvo-app-deployment.yaml
+          kubectl apply -f ./volvo-platform-app/volvo-app-svc.yaml
