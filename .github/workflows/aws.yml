@@ -25,7 +25,7 @@ jobs:
           aws-region: us-east-1
 
       - name: Configure kubectl
-        uses: azure/setup-kubectl@v1
+        uses: azure/k8s-set-context@v1
         with:
           kubeconfig: ${{ secrets.KUBECONFIG }}
 
@@ -42,8 +42,7 @@ jobs:
 
       - name: Deploy to Kubernetes
         run: |
-          cat $config
           mkdir -p $HOME/.kube
-          echo $config > $HOME/.kube/config
+          # echo $config > $HOME/.kube/config
           kubectl get nodes
           kubectl apply -f ./volvo-platform-app/volvo-app-deployment.yaml
