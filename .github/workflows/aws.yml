@@ -22,10 +22,13 @@ jobs:
           config: ${{ secrets.KUBECONFIG }}
 
       - name: Configure kubectl
-        uses: azure/setup-kubectl@v1
-        with:
-          version: "latest"
-          install-missing-components: true
+        - uses: actions/checkout@v1
+        - uses: actions-hub/kubectl@master
+          env:
+            KUBE_CONFIG: ${{ secrets.KUBECONFIG }}
+        - uses: actions-hub/kubectl@master
+          with:
+            args: get ns
 
       - name: Build Docker image
         run: |
@@ -40,6 +43,7 @@ jobs:
 
       - name: Deploy to Kubernetes
         run: |
+          cat > $HOME/.kube/config << EOF
           echo $config > $HOME/.kube/config
           cat $HOME/.kube/config
           export KUBECONFIG=$HOME/.kube/config
