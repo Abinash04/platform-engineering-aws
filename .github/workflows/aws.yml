@@ -22,9 +22,8 @@ jobs:
 
       - name: Build Docker image
         run: |      
-          aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 471112730019.dkr.ecr.us-east-1.amazonaws.com
-          docker build -t 471112730019.dkr.ecr.us-east-1.amazonaws.com/volvo-platform-app/volvo-image:latest ./volvo-platform-app
-          docker push 471112730019.dkr.ecr.us-east-1.amazonaws.com/volvo-platform-app/volvo-image:latest
+          docker build -t public.ecr.aws/r0f6g4e3/volvo-platform-app/volvo-image:latest ./volvo-platform-app
+          docker push public.ecr.aws/r0f6g4e3/volvo-platform-app/volvo-image:latest
 
       - name: Deploy to Kubernetes
         run: |
