@@ -15,5 +15,4 @@ COPY --from=build /volvo-platform-app/build /usr/share/nginx/html
 
 EXPOSE 80
 
-# Run the nginx in foreground
 CMD ["nginx", "-g", "daemon off;"]

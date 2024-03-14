@@ -4,10 +4,10 @@ metadata:
   name: volvo-platform-app-svc
   namespace: volvo
   labels:
-    env: volvo-dev
+    env: dev
 spec:
   type: LoadBalancer
   ports:
     - port: 80
   selector:
-    env: volvo-dev
+    env: dev
