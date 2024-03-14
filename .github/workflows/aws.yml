@@ -40,10 +40,10 @@ jobs:
 
       - name: Deploy to Kubernetes
         run: |
-          echo $config
-          echo $config > $HOME/.kube/config
-          cat $HOME/.kube/config
-          export KUBECONFIG=$HOME/.kube/config
+          # echo $config
+          # echo $config > $HOME/.kube/config
+          # cat $HOME/.kube/config
+          # export KUBECONFIG=$HOME/.kube/config
           kubectl get nodes
           echo $KUBECONFIG
           kubectl apply -f ./volvo-platform-app/volvo-app-deployment.yaml
