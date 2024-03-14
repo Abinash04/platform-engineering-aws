@@ -17,7 +17,6 @@ spec:
     spec:
       containers:
         - name: volvo-image
-          # image: public.ecr.aws/r0f6g4e3/volvo-platform-app:latest
           image: 471112730019.dkr.ecr.us-east-1.amazonaws.com/priv-volvo-platform-app:latest
           ports:
             - containerPort: 80
