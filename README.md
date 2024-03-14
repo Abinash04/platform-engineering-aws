@@ -6,10 +6,12 @@ Platform Engineering Practical Test - Volvo
 
 ## TechStack and Tools
 
+```
 FrontEnd - Reactjs
 CICD - GitHub Actions
 Container Registry - AWS ECR
 Container Orchestration - AWS EKS
+```
 
 ## App UI
 
