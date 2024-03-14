@@ -2,11 +2,12 @@ apiVersion: v1
 kind: Service
 metadata:
   name: volvo-platform-app-svc
+  namespace: volvo
   labels:
     env: volvo-dev
 spec:
   type: LoadBalancer
   ports:
-  - port: 80
+    - port: 80
   selector:
     env: volvo-dev
