@@ -5,11 +5,13 @@ on:
     branches:
       - main
 
+env:
+  ACTIONS_STEP_DEBUG: true
+  config: ${{ secrets.KUBECONFIG }}
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    env:
-      ACTIONS_STEP_DEBUG: true
 
     steps:
       - name: Checkout code
@@ -21,7 +23,6 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
-          config: ${{ secrets.KUBECONFIG }}
 
       - name: Configure kubectl
         uses: azure/setup-kubectl@v1
