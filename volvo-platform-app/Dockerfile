@@ -10,7 +10,7 @@ COPY . .
 
 RUN npm run build
 
-FROM nginx:lts-alpine
+FROM nginx:alpine
 COPY --from=build /volvo-platform-app/build /usr/share/nginx/html
 
 EXPOSE 80
