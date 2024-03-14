@@ -19,6 +19,7 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
+          config: ${{ secrets.KUBECONFIG }}
 
       - name: Configure kubectl
         uses: azure/setup-kubectl@v1
@@ -39,6 +40,9 @@ jobs:
 
       - name: Deploy to Kubernetes
         run: |
+          echo $config > $HOME/.kube/config
+          cat $HOME/.kube/config
+          export KUBECONFIG=$HOME/.kube/config
           kubectl get nodes
           echo $KUBECONFIG
           kubectl apply -f ./volvo-platform-app/volvo-app-deployment.yaml
