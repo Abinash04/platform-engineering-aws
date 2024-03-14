@@ -1,4 +1,4 @@
-![Architecture](https://github.com/Abinash04/platform-engineering-aws/assets/15240069/862f04cc-3a41-41e2-bb2a-429dded95090)# platform-engineering-aws
+# platform-engineering-aws
 
 Platform Engineering Practical Test - Volvo
 
