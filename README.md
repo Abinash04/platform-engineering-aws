@@ -1,4 +1,4 @@
-# platform-engineering-aws
+![Architecture](https://github.com/Abinash04/platform-engineering-aws/assets/15240069/862f04cc-3a41-41e2-bb2a-429dded95090)# platform-engineering-aws
 
 Platform Engineering Practical Test - Volvo
 
@@ -18,6 +18,10 @@ Application endpoint:
 http://a4469ee25b4f8428e8025eaf134588de-1224538186.us-east-1.elb.amazonaws.com/
 
 <img width="1736" alt="image" src="https://github.com/Abinash04/platform-engineering-aws/assets/15240069/82869488-b023-4198-a7d1-bb4054ba7b97">
+
+# Architecture
+
+![Architecture-volvo](https://github.com/Abinash04/platform-engineering-aws/assets/15240069/83e3f651-be1a-436b-8071-0cc0c40cd657)
 
 
 # Set up:
