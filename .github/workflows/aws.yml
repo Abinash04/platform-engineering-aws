@@ -22,7 +22,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t 471112730019.dkr.ecr.us-east-1.amazonaws.com/volvo-platform-app/volvo-image:latest .
+          docker build -t 471112730019.dkr.ecr.us-east-1.amazonaws.com/volvo-platform-app/volvo-image:latest ./volvo-platform-app
           docker push 471112730019.dkr.ecr.us-east-1.amazonaws.com/volvo-platform-app/volvo-image:latest
 
       - name: Deploy to Kubernetes
