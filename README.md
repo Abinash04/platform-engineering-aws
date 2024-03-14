@@ -17,7 +17,8 @@ Application endpoint:
 
 http://a4469ee25b4f8428e8025eaf134588de-1224538186.us-east-1.elb.amazonaws.com/
 
-![Alt text](image.png)
+<img width="1736" alt="image" src="https://github.com/Abinash04/platform-engineering-aws/assets/15240069/82869488-b023-4198-a7d1-bb4054ba7b97">
+
 
 # Set up:
 
