@@ -21,7 +21,8 @@ jobs:
           aws-region: us-east-1
 
       - name: Build Docker image
-        run: |      
+        run: |
+          aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/r0f6g4e3
           docker build -t public.ecr.aws/r0f6g4e3/volvo-platform-app/volvo-image:latest ./volvo-platform-app
           docker push public.ecr.aws/r0f6g4e3/volvo-platform-app/volvo-image:latest
 
