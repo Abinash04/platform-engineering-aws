@@ -8,6 +8,8 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      ACTIONS_STEP_DEBUG: true
 
     steps:
       - name: Checkout code
@@ -22,9 +24,8 @@ jobs:
           config: ${{ secrets.KUBECONFIG }}
 
       - name: Configure kubectl
-        uses: azure/setup-kubectl@v3
+        uses: azure/setup-kubectl@v1
         with:
-          version: "latest"
           kubeconfig: ${{ secrets.KUBECONFIG }}
 
       - name: Build Docker image
