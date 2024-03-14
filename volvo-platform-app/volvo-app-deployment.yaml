@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: volvo-platform-app-deployment
+  labels:
+    env: volvo-dev
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      env: volvo-dev
+  template:
+    metadata:
+      labels:
+        env: volvo-dev
+    spec:
+      containers:
+      - name: volvo-image
+        image: 471112730019.dkr.ecr.us-east-1.amazonaws.com/volvo-platform-app/volvo-image:latest
+        ports:
+        - containerPort: 80
