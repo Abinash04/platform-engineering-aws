@@ -32,11 +32,13 @@ jobs:
           # docker build -t public.ecr.aws/r0f6g4e3/volvo-platform-app/volvo-image:latest ./volvo-platform-app
           # docker push public.ecr.aws/r0f6g4e3/volvo-platform-app/volvo-image:latest
 
-          aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/r0f6g4e3
-          docker build -t volvo-platform-app ./volvo-platform-app
-          docker tag volvo-platform-app:latest public.ecr.aws/r0f6g4e3/volvo-platform-app:latest
-          docker push public.ecr.aws/r0f6g4e3/volvo-platform-app:latest
+          # aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/r0f6g4e3
+          # docker build -t volvo-platform-app ./volvo-platform-app
+          # docker tag volvo-platform-app:latest public.ecr.aws/r0f6g4e3/volvo-platform-app:latest
+          # docker push public.ecr.aws/r0f6g4e3/volvo-platform-app:latest
 
       - name: Deploy to Kubernetes
         run: |
+          kubectl get nodes
+          echo $KUBECONFIG
           kubectl apply -f ./volvo-platform-app/volvo-app-deployment.yaml
