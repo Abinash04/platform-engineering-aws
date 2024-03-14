@@ -25,8 +25,7 @@ jobs:
         uses: azure/setup-kubectl@v3
         with:
           version: "latest"
-          with:
-            kubeconfig: ${{ secrets.KUBECONFIG }}
+          kubeconfig: ${{ secrets.KUBECONFIG }}
 
       - name: Build Docker image
         run: |
