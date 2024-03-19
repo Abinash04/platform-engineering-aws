@@ -3,7 +3,7 @@ name: Deploy Volvo to AWS EKS Cluster
 on:
   push:
     branches:
-      - main
+      - terraform
     paths-ignore:
       - "README.md"
 
@@ -25,19 +25,43 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
+      # Setup Terraform
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 1.0.0
+
+      # Initialize Terraform
+      - name: Terraform Init
+        working-directory: terraform
+        run: terraform init
+
+      # Plan Terraform changes
+      - name: Terraform Plan
+        run: terraform plan -out=tfplan
+
+      # Apply Terraform changes
+      - name: Terraform Apply
+        run: terraform apply -auto-approve tfplan
+
+      # kubectl
       - name: Configure kubectl
         uses: azure/k8s-set-context@v1
         with:
           kubeconfig: ${{ secrets.KUBECONFIG }}
 
+      # Docker image build and push the image to ECR
       - name: Build Docker image
+        if: sucess()
         run: |
           aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 471112730019.dkr.ecr.us-east-1.amazonaws.com
           docker build -t priv-volvo-platform-app ./volvo-platform-app
           docker tag priv-volvo-platform-app:latest 471112730019.dkr.ecr.us-east-1.amazonaws.com/priv-volvo-platform-app:latest
           docker push 471112730019.dkr.ecr.us-east-1.amazonaws.com/priv-volvo-platform-app:latest
 
+      # deploy the app to kubernetes cluster
       - name: Deploy to Kubernetes
+
         run: |
           mkdir -p $HOME/.kube
           kubectl get nodes
