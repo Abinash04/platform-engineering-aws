@@ -52,7 +52,7 @@ jobs:
 
       # Docker image build and push the image to ECR
       - name: Build Docker image
-        if: sucess()
+        if: success()
         run: |
           aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 471112730019.dkr.ecr.us-east-1.amazonaws.com
           docker build -t priv-volvo-platform-app ./volvo-platform-app
