@@ -4,28 +4,28 @@ provider "aws" {
 }
 
 # Create IAM role for EKS admin
-resource "aws_iam_role" "eks_admin_role" {
-  name = "eks-admin"
-  assume_role_policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [{
-      Effect    = "Allow"
-      Principal = { Service = "eks.amazonaws.com" }
-      Action    = "sts:AssumeRole"
-    }]
-  })
-}
+# resource "aws_iam_role" "eks_admin_role" {
+#   name = "eks-admin"
+#   assume_role_policy = jsonencode({
+#     Version = "2012-10-17"
+#     Statement = [{
+#       Effect    = "Allow"
+#       Principal = { Service = "eks.amazonaws.com" }
+#       Action    = "sts:AssumeRole"
+#     }]
+#   })
+# }
 
-# Attach policies to EKS admin role for creating VPC and EKS cluster
-resource "aws_iam_role_policy_attachment" "eks_admin_role_vpc_policy_attachment" {
-  role       = aws_iam_role.eks_admin_role.name
-  policy_arn = "arn:aws:iam::aws:policy/AmazonVPCFullAccess"
-}
+# # Attach policies to EKS admin role for creating VPC and EKS cluster
+# resource "aws_iam_role_policy_attachment" "eks_admin_role_vpc_policy_attachment" {
+#   role       = aws_iam_role.eks_admin_role.name
+#   policy_arn = "arn:aws:iam::aws:policy/AmazonVPCFullAccess"
+# }
 
-resource "aws_iam_role_policy_attachment" "eks_admin_role_eks_policy_attachment" {
-  role       = aws_iam_role.eks_admin_role.name
-  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
-}
+# resource "aws_iam_role_policy_attachment" "eks_admin_role_eks_policy_attachment" {
+#   role       = aws_iam_role.eks_admin_role.name
+#   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
+# }
 
 # Define VPC
 resource "aws_volvo_vpc" "eks_volvo_vpc" {
